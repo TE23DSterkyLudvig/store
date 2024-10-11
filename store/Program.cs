@@ -25,9 +25,10 @@ string info = File.ReadAllText(filepath);
 
 
 System.Console.WriteLine("Du har 100 kronor från början");
-while (start > 0)
+while (start >=5)
 {
-    System.Console.WriteLine("Du handlar och kan välja mellan morot, köttbiff och gurka. Vad vill du ha?");
+    System.Console.WriteLine($"Du har {start} kr kvar");
+    System.Console.WriteLine("Du handlar och kan välja mellan morot(15kr), köttbiff(25 kr) och gurka(10 kr). Vad vill du ha?");
     System.Console.WriteLine(info);
     val = Console.ReadLine();
 
@@ -83,14 +84,15 @@ while (start > 0)
         start -= köttkost;
         totalkött += antalköttnum;
     }
-     start = Math.Max(0, start);
+    
+    if (start<=5){
+     start = 0;
+    }
 }
-int morotkost2 = antalmorotnum * morot;
-int gurkkost2 = antalgurkanum * gurka;
-int köttkost2 = antalköttnum * köttbiff;
+
 if (start <= 0)
 {
-    System.Console.WriteLine("Du har slut på pengar");
+    System.Console.WriteLine("Du kan inte köpa mer för pengarna");
     System.Console.WriteLine($"Du köpte {totalmorot} morötter, {totalgurka} gurkor och {totalkött} köttbiffar.");
 }
 
